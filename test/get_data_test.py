@@ -4,13 +4,13 @@ from BA_project_test.A_clear_data import *
 
 def single_get_data():
     t_list = operate_data.select_all()
-    operate_data.close_db()
+    # operate_data.close_db()
     return t_list
 
 
 def single_get_hot_data():
     t_list = operate_data.select_hot()
-    operate_data.close_db()
+    # operate_data.close_db()
     return t_list
 
 
@@ -143,8 +143,12 @@ def get_overseas_portion():
     return info2  # 这个是一个集合
 
 
-if __name__ == '__main__':
-    print(get_overseas_portion())
+def get_data_sum():
+    pass
+
+
+# if __name__ == '__main__':
+#     print(get_overseas_portion())
 # #     # t = flask_word_cloud()
 # #     # print(t['x_name'])
 # #     # print(t['x_value'])
