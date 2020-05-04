@@ -2,8 +2,8 @@ from pyecharts import WordCloud, Pie, Bar, Page
 from BA_project_test.create_page_html.get_data_test import *
 
 
-def create_wordcloud():  # 生成词云ok
-    t = flask_word_count()
+def create_wordcloud(ss):  # 生成词云ok
+    t = flask_word_count(ss)
     name = t['x_name']
     value = t['x_value']
     wordcloud1 = WordCloud("微博词云图")  # , width=1300, height=620)
@@ -51,9 +51,9 @@ def create_bar():  # 横着的柱状图,关于中国省份的热门评论 ok
     return bar
 
 
-def get_all_div():
+def get_all_div(sou1):
     page = Page()
-    t1 = create_wordcloud()
+    t1 = create_wordcloud(sou1)
     t2 = create_map()
     t3 = create_pie()
     t4 = create_bar()
@@ -61,11 +61,12 @@ def get_all_div():
     page.add(t2)
     page.add(t3)
     page.add(t4)
-    page.render()
+    name = str(sou1)+'.html'
+    page.render(name)
 
 
-if __name__ == '__main__':
-    get_all_div()
+# if __name__ == '__main__':
+#     get_all_div()
 
 
 

@@ -14,12 +14,12 @@ def single_get_hot_data():
     return t_list
 
 
-def flask_word_count():  # ok
+def flask_word_count(ss):  # ok
     counts = {}
     list_word_cloud = []  # 为了使用词云准备的
     # ***********************************************************
     t_list = single_get_data()
-    ss = input("请输入要搜索的话题(模拟):")
+    # ss = input("请输入要搜索的话题(模拟):")
     s_add = '#' + ss + '#'
     flag = 0
     format_data_list = []  # 用于处理返回后的数据的一个数组
@@ -130,6 +130,8 @@ def get_overseas_portion():
             counts['其它'] += 1
         elif t:
             counts['中国'] += 1
+        elif i['map_position'] == '无':
+            continue
         else:
             counts['海外'] += 1
     items = list(counts.items())

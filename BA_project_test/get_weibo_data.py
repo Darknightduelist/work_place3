@@ -11,6 +11,7 @@ from urllib import parse
 import urllib
 from BA_project_test.handle_mongo import operate_data
 # from BA_project_test.handle_mongo import Mongo_client
+from BA_project_test.create_page_html.create_html2 import *
 from warnings import simplefilter
 simplefilter(action='ignore', category=FutureWarning)
 
@@ -363,8 +364,8 @@ class Crawl_html(object):
                 # --------------------------------------------------------
                 info_list.append(info_information)
             return info_list
-        except IndexError:
-            pass
+        except:
+            print("爬取错误,跳过此页！")
 
 
 def test_queue(data_queue):
@@ -381,9 +382,10 @@ def main():
     sou = t.run()  # 可以获取到要搜索标题
     c = Crawl_html(data_queue)
     c.run()
-    print('开始生成词云......')
+    print('开始生成html文件......')
     time.sleep(3)
-    BA_project_test.A_clear_data.word_cloud_generate(sou)
+    # BA_project_test.A_clear_data.word_cloud_generate(sou)
+    get_all_div(sou)
 
 
 # if __name__ == '__main__':
